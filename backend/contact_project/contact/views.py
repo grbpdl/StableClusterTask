@@ -16,8 +16,8 @@ class ContactMessageView(APIView):
                 subject=serializer.validated_data['subject'],
                 body=f"From: {serializer.validated_data['name']} <{serializer.validated_data['email']}>\n\n"
                      f"Message:\n{serializer.validated_data['message']}",
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                to=[settings.DEFAULT_FROM_EMAIL],  
+                from_email=settings.EMAIL_HOST_USER,
+                to=["lugyzoxi@asciibinder.net"]  
             )
             try:
                 email.send()
