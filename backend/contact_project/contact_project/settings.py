@@ -136,11 +136,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CORS settings
 CORS_ALLOW_ALL_ORIGINS = True  
 
-# Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'dns1.prabhuhost.com' 
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.getenv('EMAIL')
+EMAIL_HOST = 'dns1.prabhuhost.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
+EMAIL_HOST_USER = 'dev@01cluster.com'
 EMAIL_HOST_PASSWORD = os.getenv('PASSWORD')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_EMAIL')
+DEFAULT_FROM_EMAIL = 'dev@01cluster.com'
