@@ -17,13 +17,14 @@ class ContactMessageView(APIView):
             message = serializer.validated_data['message']
 
             full_message = f"From: {name} <{email}>\n\nMessage:\n{message}"
+            print(settings.DEFAULT_FROM_EMAIL)
 
             try:
                 send_mail(
-                    subject,
-                    full_message,
-                    settings.EMAIL_HOST_USER,  # From email
-                    [email],  # To email (e.g., your admin email)
+                    subject=subject,
+                    message=full_message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[email],  
                     fail_silently=False,
                 )
                 return Response({"message": "Message sent successfully"}, status=status.HTTP_201_CREATED)
